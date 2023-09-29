@@ -2,6 +2,7 @@ package com.example.wanted.job_notice.service;
 
 import com.example.wanted.company.repository.CompanyRepository;
 import com.example.wanted.exception.CustomException;
+import com.example.wanted.exception.ErrorCode;
 import com.example.wanted.job_notice.domain.JobNotice;
 import com.example.wanted.job_notice.domain.JobNoticeDto;
 import com.example.wanted.job_notice.domain.JobNoticeForm;
@@ -50,6 +51,16 @@ public class JobNoticeServiceImpl implements JobNoticeService {
         exstingJobNotice.modifyJobNotice(dtoRequest);
         jobNoticeRepository.save(exstingJobNotice);
 
+    }
+
+    @Transactional
+    @Override
+    public void removeJobNotice(Integer jobNoticeId) {
+
+        JobNotice exstingJobNotice = jobNoticeRepository.findById(jobNoticeId)
+                .orElseThrow(() -> new CustomException(JOB_NOTICE_NOT_FOUND));
+
+        jobNoticeRepository.deleteById(jobNoticeId);
     }
 
 }

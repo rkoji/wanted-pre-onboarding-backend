@@ -30,4 +30,11 @@ public class JobNoticeController {
         jobNoticeService.modifyJobNotice(jobNoticeId, jobNoticeForm);
         return ResponseEntity.status(OK).build();
     }
+
+    @DeleteMapping("/{jobNoticeId}")
+    public ResponseEntity<Void> jobNoticeRemove(@PathVariable Integer jobNoticeId) {
+        jobNoticeService.removeJobNotice(jobNoticeId);
+        return ResponseEntity.status(OK).build();
+    }
+
 }

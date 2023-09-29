@@ -8,4 +8,6 @@ public interface JobNoticeService {
     void addJobNotice(JobNoticeForm.Request jobNoticeForm);
 
     void modifyJobNotice(Integer jobNoticeId, JobNoticeForm.Request jobNoticeForm);
+
+    void removeJobNotice(Integer jobNoticeId);
 }
