@@ -29,4 +29,32 @@ public class JobNoticeDto {
                     .build();
         }
     }
+
+    @Getter
+    @Builder
+    public static class Response{
+
+        private Integer jobNoticeId;
+
+        private Integer companyId;
+
+        private String position;
+
+        private Integer compensation;
+
+        private String details;
+
+        private String useTechnology;
+
+        public static JobNoticeDto.Response from(JobNotice jobNotice) {
+            return Response.builder()
+                    .jobNoticeId(jobNotice.getId())
+                    .companyId(jobNotice.getCompanyId())
+                    .position(jobNotice.getPosition())
+                    .compensation(jobNotice.getCompensation())
+                    .details(jobNotice.getDetails())
+                    .useTechnology(jobNotice.getUseTechnology())
+                    .build();
+        }
+    }
 }

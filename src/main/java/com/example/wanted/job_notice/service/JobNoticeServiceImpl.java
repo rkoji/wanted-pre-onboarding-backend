@@ -2,7 +2,6 @@ package com.example.wanted.job_notice.service;
 
 import com.example.wanted.company.repository.CompanyRepository;
 import com.example.wanted.exception.CustomException;
-import com.example.wanted.exception.ErrorCode;
 import com.example.wanted.job_notice.domain.JobNotice;
 import com.example.wanted.job_notice.domain.JobNoticeDto;
 import com.example.wanted.job_notice.domain.JobNoticeForm;
@@ -10,6 +9,9 @@ import com.example.wanted.job_notice.repository.JobNoticeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.wanted.exception.ErrorCode.COMPANY_NOT_FOUND;
 import static com.example.wanted.exception.ErrorCode.JOB_NOTICE_NOT_FOUND;
@@ -61,6 +63,18 @@ public class JobNoticeServiceImpl implements JobNoticeService {
                 .orElseThrow(() -> new CustomException(JOB_NOTICE_NOT_FOUND));
 
         jobNoticeRepository.deleteById(jobNoticeId);
+    }
+
+    @Override
+    public List<JobNoticeDto.Response> findJobNotice() {
+
+        List<JobNotice> jobNoticeList = jobNoticeRepository.findAll();
+
+        List<JobNoticeDto.Response> jobNoticeDtoList = jobNoticeList.stream()
+                .map(JobNoticeDto.Response::from)
+                .collect(Collectors.toList());
+
+        return jobNoticeDtoList;
     }
 
 }
