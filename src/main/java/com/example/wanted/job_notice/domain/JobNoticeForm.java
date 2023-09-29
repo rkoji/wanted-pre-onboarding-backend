@@ -6,7 +6,6 @@ import lombok.Getter;
 public class JobNoticeForm {
 
     @Getter
-    @Builder
     public static class Request {
 
         private Integer companyId;

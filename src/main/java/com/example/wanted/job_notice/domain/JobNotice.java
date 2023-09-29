@@ -30,5 +30,12 @@ public class JobNotice {
 
     private String useTechnology;
 
+    public void  modifyJobNotice(JobNoticeDto.Request request) {
+        this.position = request.getPosition();
+        this.compensation = request.getCompensation();
+        this.details = request.getDetails();
+        this.useTechnology = request.getUseTechnology();
+    }
+
 
 }

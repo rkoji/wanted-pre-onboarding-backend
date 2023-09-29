@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface JobNoticeService {
     void addJobNotice(JobNoticeForm.Request jobNoticeForm);
+
+    void modifyJobNotice(Integer jobNoticeId, JobNoticeForm.Request jobNoticeForm);
 }
