@@ -2,6 +2,7 @@ package com.example.wanted.job_notice.service;
 
 import com.example.wanted.job_notice.domain.JobNoticeDto;
 import com.example.wanted.job_notice.domain.JobNoticeForm;
+import com.example.wanted.job_notice.domain.JobNoticeSearchDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface JobNoticeService {
     void removeJobNotice(Integer jobNoticeId);
 
     List<JobNoticeDto.Response> findJobNotice();
+
+    List<JobNoticeSearchDto.Response> searchJobNotice(String search);
 }
