@@ -1,13 +1,11 @@
 package com.example.wanted.job_notice.domain;
 
-import lombok.Builder;
 import lombok.Getter;
 
 public class JobNoticeSearchDto {
 
     @Getter
-    @Builder
-    public static class Response{
+    public static class Response {
 
         private Integer jobNoticeId;
 
@@ -22,7 +20,6 @@ public class JobNoticeSearchDto {
         private Integer compensation;
 
         private String useTechnology;
-
 
     }
 }
