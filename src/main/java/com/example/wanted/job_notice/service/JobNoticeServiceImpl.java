@@ -3,10 +3,7 @@ package com.example.wanted.job_notice.service;
 import com.example.wanted.company.domain.Company;
 import com.example.wanted.company.repository.CompanyRepository;
 import com.example.wanted.exception.CustomException;
-import com.example.wanted.job_notice.domain.JobNotice;
-import com.example.wanted.job_notice.domain.JobNoticeDto;
-import com.example.wanted.job_notice.domain.JobNoticeForm;
-import com.example.wanted.job_notice.domain.JobNoticeSearchDto;
+import com.example.wanted.job_notice.domain.*;
 import com.example.wanted.job_notice.repository.JobNoticeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.example.wanted.exception.ErrorCode.*;
 
@@ -68,15 +64,29 @@ public class JobNoticeServiceImpl implements JobNoticeService {
     }
 
     @Override
-    public List<JobNoticeDto.Response> findJobNotice() {
+    public List<JobNoticeListDto.Response> findJobNotice() {
 
         List<JobNotice> jobNoticeList = jobNoticeRepository.findAll();
 
-        List<JobNoticeDto.Response> jobNoticeDtoList = jobNoticeList.stream()
-                .map(JobNoticeDto.Response::from)
-                .collect(Collectors.toList());
+        ArrayList<JobNoticeListDto.Response> jobNoticeSearchDTOs = new ArrayList<>();
 
-        return jobNoticeDtoList;
+        for (JobNotice jobNotice : jobNoticeList) {
+            Company company = companyRepository.findById(jobNotice.getCompanyId())
+                    .orElseThrow(() -> new CustomException(COMPANY_NOT_FOUND));
+
+            JobNoticeListDto.Response dtoResponse = JobNoticeListDto.Response.builder()
+                    .jobNoticeId(jobNotice.getId())
+                    .companyName(company.getName())
+                    .nation(company.getNation())
+                    .region(company.getRegion())
+                    .position(jobNotice.getPosition())
+                    .compensation(jobNotice.getCompensation())
+                    .useTechnology(jobNotice.getUseTechnology())
+                    .build();
+
+            jobNoticeSearchDTOs.add(dtoResponse);
+        }
+        return jobNoticeSearchDTOs;
     }
 
     @Override
