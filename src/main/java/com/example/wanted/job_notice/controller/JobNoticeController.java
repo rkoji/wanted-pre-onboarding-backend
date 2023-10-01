@@ -59,11 +59,14 @@ public class JobNoticeController {
         return ResponseEntity.ok(jobNoticeSearchFormList);
     }
 
-//    @GetMapping("/{jobNoticeId}")
-//    public ResponseEntity<?> jobNoticeDetail(@PathVariable Integer jobNoticeId){
-//        jobNoticeService.getDetailJobNotice(jobNoticeId);
-//    }
-
+    @GetMapping("/{jobNoticeId}")
+    public ResponseEntity<JobNoticeDetailListForm.Response> jobNoticeDetail(@PathVariable Integer jobNoticeId) {
+        JobNoticeDetailListDto.Response jobNoticeDetailListdtoResponse
+                = jobNoticeService.getDetailJobNotice(jobNoticeId);
+        JobNoticeDetailListForm.Response jobNoticeDetailListformResponse
+                = JobNoticeDetailListForm.Response.from(jobNoticeDetailListdtoResponse);
+        return ResponseEntity.ok(jobNoticeDetailListformResponse);
+    }
 
 
 }

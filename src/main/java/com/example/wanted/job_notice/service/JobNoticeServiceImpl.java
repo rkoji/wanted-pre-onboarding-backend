@@ -115,4 +115,25 @@ public class JobNoticeServiceImpl implements JobNoticeService {
         }
         return jobNoticeSearchDTOs;
     }
+
+    @Override
+    public JobNoticeDetailListDto.Response getDetailJobNotice(Integer jobNoticeId) {
+        JobNotice jobNotice = jobNoticeRepository.findById(jobNoticeId).orElseThrow(
+                () -> new CustomException(JOB_NOTICE_NOT_FOUND));
+        Company company = companyRepository.findById(jobNotice.getCompanyId()).orElseThrow(
+                () -> new CustomException(COMPANY_NOT_FOUND));
+
+        JobNoticeDetailListDto.Response dtoResponse = JobNoticeDetailListDto.Response.builder()
+                .jobNoticeId(jobNotice.getId())
+                .companyName(company.getName())
+                .nation(company.getNation())
+                .region(company.getRegion())
+                .position(jobNotice.getPosition())
+                .compensation(jobNotice.getCompensation())
+                .useTechnology(jobNotice.getUseTechnology())
+                .details(jobNotice.getDetails())
+                .build();
+
+        return dtoResponse;
+    }
 }
