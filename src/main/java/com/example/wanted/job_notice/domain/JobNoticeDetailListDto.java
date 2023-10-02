@@ -3,6 +3,8 @@ package com.example.wanted.job_notice.domain;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 public class JobNoticeDetailListDto {
 
     @Getter
@@ -24,6 +26,8 @@ public class JobNoticeDetailListDto {
         private String useTechnology;
 
         private String details;
+
+        private List<Integer> otherJobNoticesId;
 
     }
 }

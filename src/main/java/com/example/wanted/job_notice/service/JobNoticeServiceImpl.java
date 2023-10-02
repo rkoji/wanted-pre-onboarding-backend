@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.wanted.exception.ErrorCode.*;
 
@@ -123,6 +124,11 @@ public class JobNoticeServiceImpl implements JobNoticeService {
         Company company = companyRepository.findById(jobNotice.getCompanyId()).orElseThrow(
                 () -> new CustomException(COMPANY_NOT_FOUND));
 
+        List<JobNotice> existsCompanyId = jobNoticeRepository.findByCompanyId(jobNotice.getCompanyId());
+        List<Integer> companyIdList = existsCompanyId.stream()
+                .map(JobNotice::getCompanyId)
+                .collect(Collectors.toList());
+
         JobNoticeDetailListDto.Response dtoResponse = JobNoticeDetailListDto.Response.builder()
                 .jobNoticeId(jobNotice.getId())
                 .companyName(company.getName())
@@ -132,6 +138,7 @@ public class JobNoticeServiceImpl implements JobNoticeService {
                 .compensation(jobNotice.getCompensation())
                 .useTechnology(jobNotice.getUseTechnology())
                 .details(jobNotice.getDetails())
+                .otherJobNoticesId(companyIdList)
                 .build();
 
         return dtoResponse;

@@ -3,6 +3,8 @@ package com.example.wanted.job_notice.domain;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 public class JobNoticeDetailListForm {
 
     @Getter
@@ -25,6 +27,8 @@ public class JobNoticeDetailListForm {
 
         private String details;
 
+        private List<Integer> otherJobNoticesId;
+
         public static JobNoticeDetailListForm.Response from(JobNoticeDetailListDto.Response response) {
             return Response.builder()
                     .jobNoticeId(response.getJobNoticeId())
@@ -35,6 +39,7 @@ public class JobNoticeDetailListForm {
                     .compensation(response.getCompensation())
                     .useTechnology(response.getUseTechnology())
                     .details(response.getDetails())
+                    .otherJobNoticesId(response.getOtherJobNoticesId())
                     .build();
         }
 

@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface JobNoticeRepository extends JpaRepository<JobNotice, Integer> {
 
-    List<JobNotice> findByUseTechnologyContaining(String keyword);
+    List<JobNotice> findByUseTechnologyContaining(String search);
+
+    List<JobNotice> findByCompanyId(Integer companyId);
 }
