@@ -1,6 +1,11 @@
 package com.example.wanted.job_notice.controller;
 
-import com.example.wanted.job_notice.domain.*;
+import com.example.wanted.job_notice.domain.dto.JobNoticeDetailListDto;
+import com.example.wanted.job_notice.domain.dto.JobNoticeListDto;
+import com.example.wanted.job_notice.domain.dto.JobNoticeSearchDto;
+import com.example.wanted.job_notice.domain.form.JobNoticeDetailListForm;
+import com.example.wanted.job_notice.domain.form.JobNoticeForm;
+import com.example.wanted.job_notice.domain.form.JobNoticeSearchForm;
 import com.example.wanted.job_notice.service.JobNoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +46,10 @@ public class JobNoticeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<JobNoticeListForm.Response>> jobNoticeList() {
+    public ResponseEntity<List<JobNoticeForm.JobNoticeListForm.Response>> jobNoticeList() {
         List<JobNoticeListDto.Response> jobNoticeDtoList = jobNoticeService.findJobNotice();
-        List<JobNoticeListForm.Response> jobNoticeFormList = jobNoticeDtoList.stream()
-                .map(JobNoticeListForm.Response::from)
+        List<JobNoticeForm.JobNoticeListForm.Response> jobNoticeFormList = jobNoticeDtoList.stream()
+                .map(JobNoticeForm.JobNoticeListForm.Response::from)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(jobNoticeFormList);
     }

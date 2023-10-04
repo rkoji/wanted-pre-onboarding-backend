@@ -1,6 +1,9 @@
 package com.example.wanted.job_notice.service;
 
-import com.example.wanted.job_notice.domain.*;
+import com.example.wanted.job_notice.domain.dto.JobNoticeDetailListDto;
+import com.example.wanted.job_notice.domain.dto.JobNoticeListDto;
+import com.example.wanted.job_notice.domain.dto.JobNoticeSearchDto;
+import com.example.wanted.job_notice.domain.form.JobNoticeForm;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

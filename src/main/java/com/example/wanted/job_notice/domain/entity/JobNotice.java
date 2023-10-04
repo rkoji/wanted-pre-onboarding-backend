@@ -1,5 +1,6 @@
-package com.example.wanted.job_notice.domain;
+package com.example.wanted.job_notice.domain.entity;
 
+import com.example.wanted.job_notice.domain.dto.JobNoticeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

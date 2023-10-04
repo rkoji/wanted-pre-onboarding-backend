@@ -1,9 +1,11 @@
-package com.example.wanted.job_notice.domain;
+package com.example.wanted.job_notice.domain.dto;
 
 import lombok.Builder;
 import lombok.Getter;
 
-public class JobNoticeListDto {
+import java.util.List;
+
+public class JobNoticeDetailListDto {
 
     @Getter
     @Builder
@@ -22,6 +24,10 @@ public class JobNoticeListDto {
         private Integer compensation;
 
         private String useTechnology;
+
+        private String details;
+
+        private List<Integer> otherJobNoticesId;
 
     }
 }

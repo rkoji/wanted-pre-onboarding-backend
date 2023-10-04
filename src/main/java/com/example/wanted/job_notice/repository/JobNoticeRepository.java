@@ -1,6 +1,6 @@
 package com.example.wanted.job_notice.repository;
 
-import com.example.wanted.job_notice.domain.JobNotice;
+import com.example.wanted.job_notice.domain.entity.JobNotice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.wanted.job_notice.domain;
+package com.example.wanted.job_notice.domain.dto;
 
 import lombok.Builder;
 import lombok.Getter;

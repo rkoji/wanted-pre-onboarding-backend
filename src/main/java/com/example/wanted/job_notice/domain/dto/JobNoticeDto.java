@@ -1,5 +1,7 @@
-package com.example.wanted.job_notice.domain;
+package com.example.wanted.job_notice.domain.dto;
 
+import com.example.wanted.job_notice.domain.entity.JobNotice;
+import com.example.wanted.job_notice.domain.form.JobNoticeForm;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -32,7 +34,7 @@ public class JobNoticeDto {
 
     @Getter
     @Builder
-    public static class Response{
+    public static class Response {
 
         private Integer jobNoticeId;
 

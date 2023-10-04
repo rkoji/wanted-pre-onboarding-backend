@@ -1,9 +1,12 @@
-package com.example.wanted.job_notice.domain;
+package com.example.wanted.job_notice.domain.form;
 
+import com.example.wanted.job_notice.domain.dto.JobNoticeDetailListDto;
 import lombok.Builder;
 import lombok.Getter;
 
-public class JobNoticeListForm {
+import java.util.List;
+
+public class JobNoticeDetailListForm {
 
     @Getter
     @Builder
@@ -23,8 +26,12 @@ public class JobNoticeListForm {
 
         private String useTechnology;
 
-        public static JobNoticeListForm.Response from(JobNoticeListDto.Response response) {
-            return JobNoticeListForm.Response.builder()
+        private String details;
+
+        private List<Integer> otherJobNoticesId;
+
+        public static JobNoticeDetailListForm.Response from(JobNoticeDetailListDto.Response response) {
+            return Response.builder()
                     .jobNoticeId(response.getJobNoticeId())
                     .companyName(response.getCompanyName())
                     .nation(response.getNation())
@@ -32,7 +39,10 @@ public class JobNoticeListForm {
                     .position(response.getPosition())
                     .compensation(response.getCompensation())
                     .useTechnology(response.getUseTechnology())
+                    .details(response.getDetails())
+                    .otherJobNoticesId(response.getOtherJobNoticesId())
                     .build();
         }
+
     }
 }
