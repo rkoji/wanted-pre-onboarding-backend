@@ -1,12 +1,11 @@
-package com.example.wanted.apply.domain;
+package com.example.wanted.apply.domain.form;
 
-import lombok.Builder;
 import lombok.Getter;
 
 public class ApplyForm {
 
     @Getter
-    public static class Request{
+    public static class Request {
 
         private Integer jobNoticeId;
 

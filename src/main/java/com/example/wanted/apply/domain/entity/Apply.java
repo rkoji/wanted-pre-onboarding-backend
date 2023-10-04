@@ -1,4 +1,4 @@
-package com.example.wanted.apply.domain;
+package com.example.wanted.apply.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
