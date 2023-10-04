@@ -14,6 +14,7 @@ public enum ErrorCode {
     COMPANY_NOT_FOUND(NOT_FOUND, "회사를 찾을 수 없습니다."),
     SEARCH_NOT_FOUND(NOT_FOUND, "검색 내용을 찾을 수 없습니다."),
     MEMBER_NOT_FOUND(NOT_FOUND, "회원을 찾을 수 없습니다."),
+    APPLY_ONLY_ONCE(NOT_FOUND, "중복 지원은 불가능합니다."),
 
     DUPLICATE_RESOURCE(CONFLICT, "데이터가 이미 존재합니다.")
     ;
